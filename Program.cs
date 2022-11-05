@@ -203,8 +203,22 @@ Press any key to exit . . ."
 							}
 						}
 					}
-
-					File.Copy(s, dArg + @"\" + directories[0].Path);
+					var bestfile = dArg + @"\" + directories[0].Path;
+					if (!File.Exists(bestfile))
+					{
+						File.Copy(s, bestfile);
+					}
+					else
+					{
+						for (int i = 1; ; i++)
+						{
+							if (!File.Exists(bestfile + $" ({i})"))
+							{
+								File.Copy(s, bestfile + $" ({i})");
+								break;
+							}
+						}
+					}
 				}
 			}
 #if !DEBUG
