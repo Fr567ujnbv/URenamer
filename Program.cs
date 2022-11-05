@@ -22,7 +22,7 @@ Command Line Usage:
   {AppDomain.CurrentDomain.FriendlyName} [-s] <source> [-d <destination>]
 
   -s source               Path of asset bundle to rename.
-  -d destination          Path of decrypted PGR file to save.
+  -d destination          Path of destination folder.
 
 Press any key to exit . . ."
 			);
