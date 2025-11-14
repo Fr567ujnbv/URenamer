@@ -118,7 +118,7 @@ Press any key to exit . . ."
 							{
 								throw new NotSupportedException("File is not UnityFS");
 							}
-							if (!reader.TryReadInt32(out int _) ||                                   // Version
+							if (!reader.TryReadInt32(out int version) ||                                   // Version
 								!reader.TryReadStringNullTerm(out string _) ||                       // UnityWebBundleVersion
 								!reader.TryReadStringNullTerm(out string _))                         // UnityWebMinimumRevision
 							{
@@ -152,6 +152,10 @@ Press any key to exit . . ."
 							if ((flags & 0x0000003e) != 2)
 							{
 								throw new NotImplementedException($"Compresstion type '0x{flags & 0x0000003f:X2}' is not supported");
+							}
+							if (version >= 7)
+							{
+								file.Position = (long)Math.Ceiling((decimal)file.Position / 16) * 16;
 							}
 
 							using (MemoryStream uncompressedMetadata = new MemoryStream(new byte[uncompressedMetadataSize]))
