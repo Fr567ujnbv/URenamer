@@ -50,7 +50,7 @@ Press any key to exit . . ."
 		{
 			if (args.Length == 0)
 			{
-				OutputUsage("Tool to decrypt PGR files by Lamp");
+				OutputUsage("Tool to rename asset bundles by Lamp");
 				return;
 			}
 			List<string> sArg = new List<string>();
